@@ -9,17 +9,47 @@ class App extends React.Component {
         };
     }
 
-    clicked(i) {
-        console.log(i)
-        console.log(document.getElementById(`${i}`))
+    clicked(i){
+        let iB=i+10
+        while(iB<70){
+            let btn = document.getElementById(`${iB}`)
+            if((btn.classList.contains("w3-red")) || (btn.classList.contains("w3-blue"))){
+                this.draw(i)
+                return
+            }
+            i+=10
+            iB+=10
+        }
+        this.draw(i)
+    }
 
+    draw(i) {
+        let btn = document.getElementById(`${i}`)
+            if(this.state.color === "red"){
+                btn.classList.add("w3-red")
+                this.setState({color:"blue"})
+            }else{
+                btn.classList.add("w3-blue")
+                this.setState({color:"red"})
+            }
+            this.win(i)
+    }
+
+    win(id){
+        let connect = true
+        for(let i =id; i< id+4;i++){
+            let btn = document.getElementById(`${i}`)
+            if(this.state.color === "red" && (!btn.classList.contains("w3-blue"))){
+                connect=false
+            }
+            if(this.state.color === "blue" && (!btn.classList.contains("w3-red"))){
+                connect=false
+            }
+        }
+        console.log(connect)
     }
 
     render() {
-
-        var style = {
-            
-        };
 
         return (
             <div className="d-flex justify-content-center align-items-center vh-100">
