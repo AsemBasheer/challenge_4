@@ -39,11 +39,13 @@ class App extends React.Component {
         let connect = true
         for(let i =id; i< id+4;i++){
             let btn = document.getElementById(`${i}`)
-            if(this.state.color === "red" && (!btn.classList.contains("w3-blue"))){
+            if(this.state.color === "red" && (!btn.classList.contains("w3-red"))){
                 connect=false
+                console.log(this.state.color,btn.classList.contains("w3-red"))
             }
-            if(this.state.color === "blue" && (!btn.classList.contains("w3-red"))){
+            if(this.state.color === "blue" && (!btn.classList.contains("w3-blue"))){
                 connect=false
+                console.log(this.state.color,btn.classList.contains("w3-blue"))
             }
         }
         console.log(connect)
