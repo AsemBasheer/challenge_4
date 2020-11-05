@@ -9,46 +9,46 @@ class App extends React.Component {
         };
     }
 
-    clicked(i){
-        let iB=i+10
-        while(iB<70){
+    clicked(i) {
+        let iB = i + 10
+        while (iB < 70) {
             let btn = document.getElementById(`${iB}`)
-            if((btn.classList.contains("w3-red")) || (btn.classList.contains("w3-blue"))){
+            if ((btn.classList.contains("w3-red")) || (btn.classList.contains("w3-blue"))) {
                 this.draw(i)
                 return
             }
-            i+=10
-            iB+=10
+            i += 10
+            iB += 10
         }
         this.draw(i)
     }
 
     draw(i) {
         let btn = document.getElementById(`${i}`)
-            if(this.state.color === "red"){
-                btn.classList.add("w3-red")
-                this.setState({color:"blue"})
-            }else{
-                btn.classList.add("w3-blue")
-                this.setState({color:"red"})
-            }
-            this.win(i)
+        if (this.state.color === "red") {
+            btn.classList.add("w3-red")
+            this.setState({ color: "blue" })
+        } else {
+            btn.classList.add("w3-blue")
+            this.setState({ color: "red" })
+        }
+        this.win(i)
     }
 
-    win(id){
+    win(id) {
         let connect = true
-        for(let i =id; i< id+4;i++){
+        for (let i = id; i < id + 4; i++) {
             let btn = document.getElementById(`${i}`)
-            if(this.state.color === "red" && (!btn.classList.contains("w3-red"))){
-                connect=false
-                console.log(this.state.color,btn.classList.contains("w3-red"))
+            if (this.state.color === "red" && (!btn.classList.contains("w3-red"))) {
+                connect = false
+                // console.log(this.state.color,btn.classList.contains("w3-red"))
             }
-            if(this.state.color === "blue" && (!btn.classList.contains("w3-blue"))){
-                connect=false
-                console.log(this.state.color,btn.classList.contains("w3-blue"))
+            if (this.state.color === "blue" && (!btn.classList.contains("w3-blue"))) {
+                connect = false
+                // console.log(this.state.color,btn.classList.contains("w3-blue"))
             }
         }
-        console.log(connect)
+        console.log("win ?", connect)
     }
 
     render() {
